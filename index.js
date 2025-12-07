@@ -6,7 +6,7 @@ const MAX_ROWS = 10;
 // Example candidates – change as needed
 const candidates = [
   {
-    slno: 1,
+    slno: 3,
     name_ml: "പി രവി",
     name_en: "P Ravi",
     party: "CPIM",
