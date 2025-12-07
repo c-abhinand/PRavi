@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ml">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kerala EVM Demo - Ballot Unit</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Malayalam font (optional) -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Malayalam:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="page">
+      <!-- Top Tabs (Ward / Block / District) -->
+      <div class="top-tabs">
+        <button class="tab tab--active">Ward</button>
+        <!-- <button class="tab">Block</button>
+        <button class="tab">District</button> -->
+      </div>
+
+      <!-- EVM Device -->
+      <section class="evm-device" aria-label="Electronic Voting Machine">
+        <!-- Header strip -->
+        <header class="evm-header">
+          <div class="evm-header-section evm-header-section--left"></div>
+
+          <div class="evm-header-section evm-header-section--center">
+            <span class="evm-header-label">Ready</span>
+            <span class="evm-header-led evm-header-led--green"></span>
+          </div>
+
+          <div class="evm-header-section evm-header-section--right">
+            Ballot Unit&nbsp;<span id="ballotUnitNo">1</span>
+          </div>
+        </header>
+
+        <!-- Ballot Area -->
+        <main class="evm-body">
+          <div class="evm-table">
+            <!-- Data rows are injected by JS -->
+            <div id="evmRowsContainer"></div>
+          </div>
+        </main>
+      </section>
+
+      <!-- Status text below device -->
+      <footer class="status-bar">
+        <span>Selected Candidate: <strong id="statusSelected">None</strong></span>
+        <span>Vote Status: <strong id="statusVote">Not Cast</strong></span>
+      </footer>
+    </div>
+
+    <!-- “vote recorded” toast -->
+    <div id="toast" class="toast">Vote recorded (Demo only)</div>
+
+    <!-- Beep Sound (put assets/beep.mp3 in your assets folder) -->
+    <audio id="beepSound" src="assets/beep.mp3" preload="auto"></audio>
+
+    <!-- =========================
+         VVPAT OVERLAY (NEW PAGE)
+         ========================= -->
+    <div id="vvpatOverlay" class="vvpat-overlay hidden">
+      <div class="vvpat-card">
+        <div class="vvpat-heading">
+          <p>വോട്ടിംഗ് മെഷീനിൽ മൂന്നാമന്‍,</p>
+          <p>ജന മനസ്സുകളില്‍ ഒന്നാമന്‍</p>
+        </div>
+
+        <div class="vvpat-card-main">
+          <div class="vvpat-photo-wrap">
+            <img
+              id="vvpatPhoto"
+              class="vvpat-photo"
+              src=""
+              alt="Candidate Photo"
+            />
+            <div class="vvpat-voted-chip">
+              <span>Voted</span>
+              <span class="vvpat-check">✓</span>
+            </div>
+          </div>
+
+          <div class="vvpat-info">
+            <div id="vvpatNameMl" class="vvpat-name-ml"></div>
+            <div id="vvpatNameEn" class="vvpat-name-en"></div>
+            <div id="vvpatParty" class="vvpat-party"></div>
+
+            <div class="vvpat-symbol-wrap">
+              <img
+                id="vvpatSymbol"
+                class="vvpat-symbol"
+                src=""
+                alt="Party Symbol"
+              />
+            </div>
+          </div>
+        </div>
+
+        <button id="vvpatOkBtn" class="vvpat-ok-btn">OK</button>
+      </div>
+    </div>
+    <!-- ========================= -->
+
+    <script src="index.js"></script>
+  </body>
+</html>
